@@ -1,0 +1,42 @@
+package components
+
+templ rootStyle() {
+	<style>
+		@font-face {
+			font-family: "OpenSans";
+			font-style: normal;
+			font-weight: 400;
+			font-stretch: 100%;
+			src: url("/public/fonts/OpenSans.woff2") format("woff2");
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html, body {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			font-family: "OpenSans", sans-serif;
+		}
+	</style>
+}
+
+templ Root() {
+    <!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<title>JavaScriptDle</title>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			@rootStyle()
+		</head>
+		<body>
+			{ children... }
+			<script src="/public/js/htmx.min.js"></script>
+		</body>
+	</html>
+}

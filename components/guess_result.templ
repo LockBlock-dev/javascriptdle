@@ -1,0 +1,43 @@
+package components
+
+import "github.com/LockBlock-dev/javascriptdle/entity"
+
+css correct() {
+    background-color: #229954;
+}
+
+css incorrect() {
+    background-color: #c70039;
+}
+
+css GuessRowStyle() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+templ guessRow(label string, isCorrect bool) {
+    <div
+        style="border: 1px solid black;"
+        class={ GuessRowStyle(), templ.KV(correct(), isCorrect), templ.KV(incorrect(), !isCorrect) }
+    >
+        { label }
+    </div>
+}
+
+css Guess() {
+    list-style: none;
+    display: grid;
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+templ GuessResult(result []entity.GuessResult) {
+    <li class={ Guess() }>
+        for _, pair := range result {
+            @guessRow(pair.Label, pair.IsCorrect)
+        }
+    </li>
+}

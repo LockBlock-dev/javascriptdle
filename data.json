@@ -1,0 +1,74 @@
+[
+    {
+        "object": "Number",
+        "method": "parseInt",
+        "ECMAversion": "ES1",
+        "returnType": "number",
+        "mandatoryParams": 1,
+        "optionalParams": 1,
+        "totalParams": 2
+    },
+    {
+        "object": "Number",
+        "method": "isNaN",
+        "ECMAversion": "ES6",
+        "returnType": "boolean",
+        "mandatoryParams": 1,
+        "optionalParams": 0,
+        "totalParams": 1
+    },
+    {
+        "object": "Number",
+        "method": "toFixed",
+        "ECMAversion": "ES3",
+        "returnType": "string",
+        "mandatoryParams": 0,
+        "optionalParams": 1,
+        "totalParams": 1
+    },
+    {
+        "object": "Array",
+        "method": "push",
+        "ECMAversion": "ES3",
+        "returnType": "number",
+        "mandatoryParams": 0,
+        "optionalParams": 0,
+        "totalParams": -1
+    },
+    {
+        "object": "Array",
+        "method": "pop",
+        "ECMAversion": "ES3",
+        "returnType": "any",
+        "mandatoryParams": 0,
+        "optionalParams": 0,
+        "totalParams": 0
+    },
+    {
+        "object": "Array",
+        "method": "map",
+        "ECMAversion": "ES5",
+        "returnType": "Array",
+        "mandatoryParams": 1,
+        "optionalParams": 1,
+        "totalParams": 2
+    },
+    {
+        "object": "Array",
+        "method": "filter",
+        "ECMAversion": "ES5",
+        "returnType": "Array",
+        "mandatoryParams": 1,
+        "optionalParams": 1,
+        "totalParams": 2
+    },
+    {
+        "object": "Array",
+        "method": "reduce",
+        "ECMAversion": "ES5",
+        "returnType": "any",
+        "mandatoryParams": 1,
+        "optionalParams": 1,
+        "totalParams": 2
+    }
+]

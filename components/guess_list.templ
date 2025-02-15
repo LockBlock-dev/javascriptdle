@@ -1,0 +1,27 @@
+package components
+
+templ guessHeader(header string) {
+    <div
+        style="border-bottom: 1px solid black;"
+        class={ GuessRowStyle() }
+    >
+        { header }
+    </div>
+}
+
+css guesses() {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+templ GuessList() {
+    <ul id="guess_list" class={ guesses() }>
+        <li class={ Guess() }>
+            @guessHeader("Object")
+            @guessHeader("Method")
+            @guessHeader("ECMA version")
+            @guessHeader("Return type")
+        </li>
+    </ul>
+}

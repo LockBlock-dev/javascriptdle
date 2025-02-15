@@ -1,0 +1,8 @@
+.env
+.vscode
+*_templ.txt
+*_templ.go
+public/fonts/*
+!public/fonts/.gitkeep
+public/js/*.min.js
+bin/

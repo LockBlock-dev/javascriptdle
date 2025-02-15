@@ -1,0 +1,82 @@
+package views
+
+import (
+    "fmt"
+
+    "github.com/LockBlock-dev/javascriptdle/components"
+    "github.com/LockBlock-dev/javascriptdle/entity"
+)
+
+css guess_today() {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 1rem;
+}
+
+css guess_answers() {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+css main() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-grow: 1;
+    background: #f4f4f4;
+    padding: 20px;
+}
+
+templ Home(items []entity.GuessableItem) {
+    @components.Root() {
+        @components.Container() {
+            @components.Header()
+
+            <main class={ main() }>
+                <div class={ guess_today() }>Guess today's JavaScript method!</div>
+                <div class={ guess_answers() }>
+                    <input
+                        id="guess_input"
+                        name="guess"
+                        placeholder="Type a JavaScript method..."
+                        list="available_answers"
+                        required
+                        hx-post="/guess"
+                        hx-trigger="guess"
+                        hx-target="#guess_list"
+                        hx-swap="beforeend"
+                    />
+
+                    <datalist id="available_answers">
+                    if len(items) == 0 {
+                        <option value="" disabled></option>
+                    } else {
+                        for _, item := range items {
+                            <option value={ fmt.Sprintf("%s.%s", item.Object, item.Method) }></option>
+                        }
+                    }
+                    </datalist>
+
+                    @components.GuessList()
+                </div>
+            </main>
+            
+            @components.Footer()
+        }
+
+        <script>
+        document.getElementById("guess_input").addEventListener("input", ({ target: input }) => {
+            const datalist = document.getElementById(input.getAttribute("list"));
+            const options = Array.from(datalist.options).map(option => option.value.toLowerCase());
+            const value = input.value.toLowerCase()
+
+            if (options.includes(value)) {
+                htmx.trigger("#guess_input", "guess", { guess: value });
+                input.value = "";
+            }
+        });
+        </script>
+    }
+}
